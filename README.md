@@ -12,7 +12,7 @@ Resume Builder
 - Step-by-step Resume Generator
 - Preview and Download as PDF
 - Save Resume Data for Future Edits
-- 
+  
 Tech Stack
 
 | Technology   | Description                    |
