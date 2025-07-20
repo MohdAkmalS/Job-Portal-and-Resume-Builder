@@ -1,0 +1,129 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #2e3b4e; /* Dark Navy */
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.title h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+/* Job Filters */
+.job-filters {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.job-filters h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.filter-group {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.filter-group label {
+  font-size: 1rem;
+  margin-right: 8px;
+  color: #333;
+}
+
+.filter-group select {
+  padding: 6px;
+  font-size: 1rem;
+}
+
+/* Job Listings Section Background */
+.job-listing-section {
+  background-color: #ffffff;
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Job Listings */
+.job-listings {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Job Card */
+.job-card {
+  background-color: #f9f9f9;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.job-card h3 {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.job-card p {
+  font-size: 0.9em;
+  color: #555;
+  margin: 5px 0;
+}
+
+.apply-btn {
+  background-color: #0056b3; /* Blue */
+  color: #ffffff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: 500;
+  margin-top: 10px;
+  text-align: center;
+  align-self: start;
+  transition: background-color 0.3s;
+}
+
+.apply-btn:hover {
+  background-color: #003a80; /* Darker Blue */
+}

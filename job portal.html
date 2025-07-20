@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Portal</title>
+    <link rel="stylesheet" href="a1.css" />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="title">
+        <h1>Job Portal</h1>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="about us.html">About</a></li>
+        <li><a href="basic home.html">Resume</a></li>
+        <li><a href="contact us.html">Contact</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </nav>
+
+    <!-- Job Filters Section -->
+    <div class="job-filters">
+      <h2>Filter Job Listings</h2>
+      <div class="filter-group">
+        <label>Date Posted:</label>
+        <select id="date-filter" onchange="filterJobs()">
+          <option value="all">All</option>
+          <option value="last-week">Last Week</option>
+          <option value="3-days">3 Days</option>
+          <option value="2-days">2 Days</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Job Type:</label>
+        <select id="job-type-filter" onchange="filterJobs()">
+          <option value="all">All</option>
+          <option value="full-time">Full-time</option>
+          <option value="part-time">Part-time</option>
+          <option value="contract">Contract</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <label>Experience Level:</label>
+        <select id="experience-filter" onchange="filterJobs()">
+          <option value="all">All</option>
+          <option value="entry-level">Entry Level</option>
+          <option value="mid-level">Mid Level</option>
+          <option value="senior-level">Senior Level</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Job Listings Section -->
+    <div class="job-listing-section">
+      <div class="job-listings">
+        <!-- Example Job Card -->
+        <div
+          class="job-card"
+          data-date="last-week"
+          data-job-type="full-time"
+          data-experience="senior-level"
+        >
+          <h3>ServiceNow Developer (Service Portal)</h3>
+          <p>Aaludra Technologies | Coimbatore, Chennai</p>
+          <p>4-9 Yrs | Not disclosed</p>
+          <a href="untitled-21.html" class="apply-btn">Apply Now</a>
+        </div>
+        <div
+          class="job-card"
+          data-date="3-days"
+          data-job-type="contract"
+          data-experience="mid-level"
+        >
+          <h3>Web Logic Portal</h3>
+          <p>ezProHub LLC | Coimbatore</p>
+          <p>2-5 Yrs | Not disclosed</p>
+          <a href="untitled-21.html" class="apply-btn">Apply Now</a>
+        </div>
+        <div
+          class="job-card"
+          data-date="2-days"
+          data-job-type="part-time"
+          data-experience="entry-level"
+        >
+          <h3>HR Executive / HR Recruiter</h3>
+          <p>VSJ Infotech | Coimbatore, Madurai</p>
+          <p>0-2 Yrs | ₹1.5-2.5 Lacs PA</p>
+          <a href="untitled-21.html" class="apply-btn">Apply Now</a>
+        </div>
+        <div
+          class="job-card"
+          data-date="last-week"
+          data-job-type="full-time"
+          data-experience="mid-level"
+        >
+          <h3>Software Engineer</h3>
+          <p>Tech Solutions | Bangalore</p>
+          <p>1-3 Yrs | ₹3-5 Lacs PA</p>
+          <a href="untitled-21.html" class="apply-btn">Apply Now</a>
+        </div>
+        <div
+          class="job-card"
+          data-date="3-days"
+          data-job-type="full-time"
+          data-experience="entry-level"
+        >
+          <h3>Data Analyst</h3>
+          <p>Insight Analytics | Remote</p>
+          <p>2-4 Yrs | ₹4-6 Lacs PA</p>
+          <a href="untitled-21.html" class="apply-btn">Apply Now</a>
+        </div>
+        <!-- Add more job cards as needed -->
+      </div>
+    </div>
+
+    <script src="s1.js"></script>
+  </body>
+</html>

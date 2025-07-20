@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employment Application</title>
+    <link rel="stylesheet" href="ste.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <!-- Header Section with Image -->
+      <div class="header">
+        <img
+          src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5366b04d-5464-46d6-ae02-a84c4e53c15d/ddkd74s-f2355891-c1b7-4946-9def-a01ad5517c30.png/v1/fill/w_1280,h_469,q_80,strp/we_are_hiring_poster_idea_by_yellowishguy_ddkd74s-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NDY5IiwicGF0aCI6IlwvZlwvNTM2NmIwNGQtNTQ2NC00NmQ2LWFlMDItYTg0YzRlNTNjMTVkXC9kZGtkNzRzLWYyMzU1ODkxLWMxYjctNDk0Ni05ZGVmLWEwMWFkNTUxN2MzMC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.oXjimvOuJIYgaUjV4uIyCkFQO5edo59KNBhyOVc-yFs"
+          alt="We Are Hiring"
+        />
+      </div>
+
+      <!-- Form Title and Description -->
+      <h2>Employment Application</h2>
+      <p>
+        Fill the form below accurately indicating your potentials and
+        suitability to job applying for.
+      </p>
+
+      <!-- Form -->
+      <form id="application-form">
+        <!-- Name Section -->
+        <div class="form-group">
+          <label for="name">Name <span>*</span></label>
+          <div class="form-row">
+            <input
+              type="text"
+              id="first-name"
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              id="last-name"
+              placeholder="Last Name"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Birth Date Section -->
+        <div class="form-group">
+          <label for="birthdate">Birth Date</label>
+          <div class="form-row">
+            <select id="birth-month" required>
+              <option value="">Month</option>
+            </select>
+            <select id="birth-day" required>
+              <option value="">Day</option>
+            </select>
+            <select id="birth-year" required>
+              <option value="">Year</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="yourname@example.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(000) 000-0000" required />
+        </div>
+
+        <div class="form-group">
+          <label for="resume">Upload Your Resume</label>
+          <input type="file" id="resume" required />
+        </div>
+
+        <!-- Cover Letter -->
+        <div class="form-group">
+          <label for="cover-letter">Cover Letter</label>
+          <textarea
+            id="cover-letter"
+            rows="5"
+            placeholder="Write your cover letter here..."
+            required
+          ></textarea>
+        </div>
+        <button onclick="goToPage(event)" type="button" class="submit-btn">
+          Apply
+        </button>
+      </form>
+    </div>
+
+    <script>
+      // Populate Month Dropdown
+      const monthSelect = document.getElementById("birth-month");
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      months.forEach((month, index) => {
+        const option = document.createElement("option");
+        option.value = index + 1;
+        option.textContent = month;
+        monthSelect.appendChild(option);
+      });
+
+      // Populate Day Dropdown
+      const daySelect = document.getElementById("birth-day");
+      for (let day = 1; day <= 31; day++) {
+        const option = document.createElement("option");
+        option.value = day;
+        option.textContent = day;
+        daySelect.appendChild(option);
+      }
+
+      // Populate Year Dropdown
+      const yearSelect = document.getElementById("birth-year");
+      const currentYear = new Date().getFullYear();
+      for (let year = currentYear; year >= 1900; year--) {
+        const option = document.createElement("option");
+        option.value = year;
+        option.textContent = year;
+        yearSelect.appendChild(option);
+      }
+      function goToPage(event) {
+        event.preventDefault(); // Prevent form submission
+        window.location.href = "home.html"; // Replace 'about.html' with the actual page you want to go to
+      }
+    </script>
+  </body>
+</html>
