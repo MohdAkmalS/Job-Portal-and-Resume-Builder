@@ -1,5 +1,9 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import axios from 'axios';
 import { AuthProvider } from './context/AuthContext';
+
+// Set global axios defaults
+axios.defaults.withCredentials = true;
 import Navbar from './components/Navbar';
 import ProtectedRoute from './components/ProtectedRoute';
 
