@@ -28,7 +28,7 @@ const ProfilePreview = () => {
             // 1. Fetch Job (Background update or Initial Fetch)
             if (jobId) {
                 try {
-                    const jobRes = await axios.get(`http://localhost:5000/api/jobs/${jobId}`);
+                    const jobRes = await axios.get(`https://jobportal-backend.vercel.app/api/jobs/${jobId}`);
                     console.log("API Job Response:", jobRes.data);
 
                     if (jobRes.data.success && jobRes.data.data) {
@@ -45,8 +45,8 @@ const ProfilePreview = () => {
             // 2. Fetch Fresh User Data AND Application Status
             try {
                 const [userRes, statsRes] = await Promise.all([
-                    axios.get('http://localhost:5000/api/auth/me', { withCredentials: true }),
-                    axios.get('http://localhost:5000/api/applications/my-stats', { withCredentials: true })
+                    axios.get('https://jobportal-backend.vercel.app/api/auth/me', { withCredentials: true }),
+                    axios.get('https://jobportal-backend.vercel.app/api/applications/my-stats', { withCredentials: true })
                 ]);
 
                 if (userRes.data.success) setFreshUser(userRes.data.user);
@@ -75,7 +75,7 @@ const ProfilePreview = () => {
             const formData = new FormData();
             formData.append('resume', resumeFile);
 
-            const uploadRes = await axios.post('http://localhost:5000/api/upload', formData, {
+            const uploadRes = await axios.post('https://jobportal-backend.vercel.app/api/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 withCredentials: true
             });
@@ -89,7 +89,7 @@ const ProfilePreview = () => {
                 resumeUrl: realResumeUrl
             };
 
-            await axios.post(`http://localhost:5000/api/applications/${jobId}/apply`, payload, { withCredentials: true });
+            await axios.post(`https://jobportal-backend.vercel.app/api/applications/${jobId}/apply`, payload, { withCredentials: true });
 
             navigate('/my-applications');
         } catch (err) {

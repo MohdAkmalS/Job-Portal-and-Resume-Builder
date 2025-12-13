@@ -28,7 +28,7 @@ const ApplicationDetails = () => {
 
     const fetchApplication = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/applications/${id}`, { withCredentials: true });
+            const res = await axios.get(`https://jobportal-backend.vercel.app/api/applications/${id}`, { withCredentials: true });
             setApplication(res.data.data);
             setNote(res.data.data.recruiterNotes || '');
         } catch (err) {
@@ -40,7 +40,7 @@ const ApplicationDetails = () => {
 
     const handleStatusUpdate = async (status) => {
         try {
-            await axios.patch(`http://localhost:5000/api/applications/${id}/status`, { status }, { withCredentials: true });
+            await axios.patch(`https://jobportal-backend.vercel.app/api/applications/${id}/status`, { status }, { withCredentials: true });
             fetchApplication();
             alert(`Application ${status}`);
         } catch (err) {
@@ -51,7 +51,7 @@ const ApplicationDetails = () => {
     const handleScheduleInterview = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`http://localhost:5000/api/applications/${id}/schedule`, interviewData, { withCredentials: true });
+            await axios.post(`https://jobportal-backend.vercel.app/api/applications/${id}/schedule`, interviewData, { withCredentials: true });
             fetchApplication();
             alert("Interview Scheduled!");
         } catch (err) {
@@ -61,7 +61,7 @@ const ApplicationDetails = () => {
 
     const handleAddNote = async () => {
         try {
-            await axios.put(`http://localhost:5000/api/applications/${id}/note`, { note }, { withCredentials: true });
+            await axios.put(`https://jobportal-backend.vercel.app/api/applications/${id}/note`, { note }, { withCredentials: true });
             alert("Note saved");
         } catch (err) {
             alert("Failed to save note");

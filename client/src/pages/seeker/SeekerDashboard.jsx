@@ -20,8 +20,8 @@ const SeekerDashboard = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/applications/my-stats', { withCredentials: true });
-                const recRes = await axios.get('http://localhost:5000/api/jobs/recommendations', { withCredentials: true });
+                const res = await axios.get('https://jobportal-backend.vercel.app/api/applications/my-stats', { withCredentials: true });
+                const recRes = await axios.get('https://jobportal-backend.vercel.app/api/jobs/recommendations', { withCredentials: true });
                 setStats({ ...res.data.data, recommendations: recRes.data.data });
 
                 // Extract applied IDs

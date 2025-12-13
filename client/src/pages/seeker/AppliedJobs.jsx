@@ -30,7 +30,7 @@ const AppliedJobs = () => {
                 // Let's assume I'll add `GET /api/applications/me` in backend first.
                 // But I am in frontend mode. I will write the code to expect it.
 
-                const res = await axios.get('http://localhost:5000/api/applications/my-stats', { withCredentials: true });
+                const res = await axios.get('https://jobportal-backend.vercel.app/api/applications/my-stats', { withCredentials: true });
                 // Note: The stats endpoint currently only returns recent 3. 
                 // I should probably update the backend to support a full list or separate endpoint.
                 // I will use `recent` for now and note it.

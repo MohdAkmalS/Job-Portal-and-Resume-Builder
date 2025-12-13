@@ -49,7 +49,7 @@ const PostJob = () => {
                 keywords: formData.keywords.split(',').map(k => k.trim()).filter(k => k !== '')
             };
 
-            await axios.post('http://localhost:5000/api/jobs', payload, { withCredentials: true });
+            await axios.post('https://jobportal-backend.vercel.app/api/jobs', payload, { withCredentials: true });
             navigate('/dashboard');
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to post job');

@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
 
     const checkUserLoggedIn = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/auth/me', { withCredentials: true });
+            const res = await axios.get('https://jobportal-backend.vercel.app/api/auth/me', { withCredentials: true });
             setUser(res.data.user);
         } catch (err) {
             setUser(null);
@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const login = async (email, password) => {
-        const res = await axios.post('http://localhost:5000/api/auth/login', { email, password }, {
+        const res = await axios.post('https://jobportal-backend.vercel.app/api/auth/login', { email, password }, {
             withCredentials: true
         });
         setUser(res.data.user);
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (userData) => {
-        const res = await axios.post('http://localhost:5000/api/auth/register', userData, {
+        const res = await axios.post('https://jobportal-backend.vercel.app/api/auth/register', userData, {
             withCredentials: true
         });
         setUser(res.data.user);
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const logout = async () => {
-        await axios.get('http://localhost:5000/api/auth/logout', { withCredentials: true });
+        await axios.get('https://jobportal-backend.vercel.app/api/auth/logout', { withCredentials: true });
         setUser(null);
     };
 

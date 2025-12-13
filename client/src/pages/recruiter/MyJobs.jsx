@@ -14,7 +14,7 @@ const MyJobs = () => {
 
     const fetchJobs = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/jobs/my-jobs', { withCredentials: true });
+            const res = await axios.get('https://jobportal-backend.vercel.app/api/jobs/my-jobs', { withCredentials: true });
             setJobs(res.data.data);
         } catch (err) {
             setError('Failed to fetch jobs');
@@ -25,7 +25,7 @@ const MyJobs = () => {
 
     const toggleStatus = async (id) => {
         try {
-            await axios.patch(`http://localhost:5000/api/jobs/${id}/status`, {}, { withCredentials: true });
+            await axios.patch(`https://jobportal-backend.vercel.app/api/jobs/${id}/status`, {}, { withCredentials: true });
             fetchJobs(); // Refresh
         } catch (err) {
             console.error(err);
@@ -35,7 +35,7 @@ const MyJobs = () => {
     const deleteJob = async (id) => {
         if (!window.confirm('Are you sure you want to delete this job?')) return;
         try {
-            await axios.delete(`http://localhost:5000/api/jobs/${id}`, { withCredentials: true });
+            await axios.delete(`https://jobportal-backend.vercel.app/api/jobs/${id}`, { withCredentials: true });
             // Remove from list
             setJobs(jobs.filter(job => job._id !== id));
         } catch (err) {

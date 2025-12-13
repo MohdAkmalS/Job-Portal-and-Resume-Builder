@@ -59,7 +59,7 @@ const CompanyProfile = () => {
                 }
             };
 
-            await axios.put('http://localhost:5000/api/auth/update-profile', payload, { withCredentials: true });
+            await axios.put('https://jobportal-backend.vercel.app/api/auth/update-profile', payload, { withCredentials: true });
             setMessage({ type: 'success', text: 'Profile updated successfully!' });
         } catch (err) {
             setMessage({ type: 'error', text: err.response?.data?.message || 'Update failed' });

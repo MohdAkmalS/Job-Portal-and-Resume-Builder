@@ -10,7 +10,7 @@ const ShortlistedJobs = () => {
         const fetchApps = async () => {
             try {
                 // Fetch all and filter client-side for now as we don't have a specific filtered endpoint
-                const res = await axios.get('http://localhost:5000/api/applications/my-stats', { withCredentials: true });
+                const res = await axios.get('https://jobportal-backend.vercel.app/api/applications/my-stats', { withCredentials: true });
                 // The stats endpoint returns .applications (full list) as per my latest view of controller
                 // Wait, the controller code I viewed showed `applications` being returned in the data object.
                 const allApps = res.data.data.applications || [];
