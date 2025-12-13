@@ -1,0 +1,9 @@
+--- Brevo Diagnostic Start ---
+API Key Present: true
+API Key First 4 chars: xkey
+Email From: mohammedakmal9786@gmail.com
+Attempting to send OTP to test@example.com...
+Result: {
+  "success": true
+}
+--- Brevo Diagnostic End ---
