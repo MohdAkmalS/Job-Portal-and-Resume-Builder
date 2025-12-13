@@ -21,6 +21,7 @@ const sendTokenResponse = (user, statusCode, res) => {
 
     if (process.env.NODE_ENV === 'production') {
         options.secure = true;
+        options.sameSite = 'none';
     }
 
     res.status(statusCode)
@@ -308,7 +309,8 @@ exports.login = async (req, res) => {
             .cookie('token', jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' }), {
                 expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
                 httpOnly: true,
-                secure: process.env.NODE_ENV === 'production'
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
             })
             .json({
                 success: true,
@@ -604,7 +606,9 @@ exports.updateProfile = async (req, res) => {
 exports.logout = async (req, res) => {
     res.cookie('token', 'none', {
         expires: new Date(Date.now() + 10 * 1000),
-        httpOnly: true
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
     });
 
     res.status(200).json({
