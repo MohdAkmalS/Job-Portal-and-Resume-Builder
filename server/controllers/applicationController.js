@@ -5,6 +5,7 @@ const Job = require('../models/Job');
 // @route   POST /api/applications/:jobId
 // @access  Private (Seeker)
 exports.applyForJob = async (req, res) => {
+    console.log(`🚀 Processing Application for Job: ${req.params.jobId} | User: ${req.user.id}`);
     try {
         const job = await Job.findById(req.params.jobId);
         if (!job) {
