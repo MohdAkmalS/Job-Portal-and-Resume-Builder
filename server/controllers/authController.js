@@ -143,6 +143,26 @@ exports.verifyEmailOTP = async (req, res) => {
     }
 };
 
+/* ===================== RESEND SIGNUP OTP ===================== */
+exports.resendSignupOTP = async (req, res) => {
+    res.status(501).json({ success: false, message: "Not implemented yet" });
+};
+
+/* ===================== FORGOT PASSWORD ===================== */
+exports.forgotPassword = async (req, res) => {
+    res.status(501).json({ success: false, message: "Not implemented yet" });
+};
+
+/* ===================== VERIFY RESET OTP ===================== */
+exports.verifyResetOTP = async (req, res) => {
+    res.status(501).json({ success: false, message: "Not implemented yet" });
+};
+
+/* ===================== RESET PASSWORD ===================== */
+exports.resetPassword = async (req, res) => {
+    res.status(501).json({ success: false, message: "Not implemented yet" });
+};
+
 /* ===================== LOGIN ===================== */
 exports.login = async (req, res) => {
     try {
@@ -205,6 +225,11 @@ exports.getMe = async (req, res) => {
     } catch (err) {
         res.status(500).json({ success: false, message: err.message });
     }
+};
+
+/* ===================== UPDATE PROFILE ===================== */
+exports.updateProfile = async (req, res) => {
+    res.status(501).json({ success: false, message: "Not implemented yet" });
 };
 
 /* ===================== LOGOUT ===================== */
