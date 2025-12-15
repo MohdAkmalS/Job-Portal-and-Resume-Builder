@@ -35,7 +35,6 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 
-/* ===================== CORS (FIXED, NO WILDCARD) ===================== */
 /* ===================== CORS (FIXED, DYNAMIC ORIGIN) ===================== */
 const allowedOrigins = [
     "https://job-portal-and-resume-builder.vercel.app",
