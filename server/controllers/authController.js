@@ -1,8 +1,9 @@
 const User = require("../models/User");
 const OTP = require("../models/OTP");
 const jwt = require("jsonwebtoken");
-const fs = require("fs");
-const path = require("path");
+
+// const fs = require("fs"); 
+// const path = require("path");
 
 const {
     validatePassword,
@@ -32,15 +33,12 @@ const cookieOptions = {
 };
 
 /* ===================== LOGIN DEBUG LOG ===================== */
-const logFile = path.join(__dirname, "../login-debug.log");
+/* ===================== LOGIN DEBUG LOG ===================== */
+// const logFile = path.join(__dirname, "../login-debug.log");
 
 function logLoginAttempt(email, status, reason) {
-    const msg = `${new Date().toISOString()} | ${email} | ${status} | ${reason}\n`;
-    try {
-        fs.appendFileSync(logFile, msg);
-    } catch (e) {
-        console.error("Login logging failed:", e);
-    }
+    const msg = `${new Date().toISOString()} | ${email} | ${status} | ${reason}`;
+    console.log(msg); // Use console.log for Vercel
 }
 
 /* ===================== SEND SIGNUP OTP ===================== */
