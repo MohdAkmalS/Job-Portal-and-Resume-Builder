@@ -47,6 +47,10 @@ app.use("/api/upload", require("../routes/uploadRoutes"));
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 /* ===================== HEALTH CHECK ===================== */
+app.get("/", (req, res) => {
+    res.json({ message: "Backend running on Vercel", status: "OK" });
+});
+
 app.get("/api/health", (req, res) => {
     res.json({ status: "OK" });
 });
