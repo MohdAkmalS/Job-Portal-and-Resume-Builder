@@ -224,9 +224,20 @@ const ReviewApplications = () => {
                                     <option>Offline</option>
                                 </select>
                             </div>
+                            {interviewData.mode === 'Online' ? (
+                                <div>
+                                    <label className="block text-sm text-muted mb-1">Meeting Link (Zoom/Google Meet)</label>
+                                    <input type="url" required value={interviewData.link || ''} onChange={e => setInterviewData({ ...interviewData, link: e.target.value })} className="input-field" placeholder="https://..." />
+                                </div>
+                            ) : (
+                                <div>
+                                    <label className="block text-sm text-muted mb-1">Office Location / Address</label>
+                                    <input type="text" required value={interviewData.location || ''} onChange={e => setInterviewData({ ...interviewData, location: e.target.value })} className="input-field" placeholder="Floor 4, Building A..." />
+                                </div>
+                            )}
                             <div>
-                                <label className="block text-sm text-muted mb-1">Notes / Meeting Link</label>
-                                <textarea rows="3" value={interviewData.notes} onChange={e => setInterviewData({ ...interviewData, notes: e.target.value })} className="input-field" placeholder="Zoom link or address..." />
+                                <label className="block text-sm text-muted mb-1">Additional Notes</label>
+                                <textarea rows="2" value={interviewData.notes} onChange={e => setInterviewData({ ...interviewData, notes: e.target.value })} className="input-field" placeholder="Instructions for candidate..." />
                             </div>
                             <div className="flex justify-end gap-2 pt-4">
                                 <button type="button" onClick={() => setScheduleModal(false)} className="px-4 py-2 text-muted hover:text-white">Cancel</button>

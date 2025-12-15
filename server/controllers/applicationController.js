@@ -156,6 +156,8 @@ exports.scheduleInterview = async (req, res) => {
             date: req.body.date,
             time: req.body.time,
             mode: req.body.mode,
+            link: req.body.link,         // Save Link
+            location: req.body.location, // Save Location
             notes: req.body.notes
         };
         application.status = 'Interview'; // Auto update status
