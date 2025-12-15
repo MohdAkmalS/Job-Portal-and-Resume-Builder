@@ -22,27 +22,41 @@ function checkFileType(file, cb) {
 
 const upload = multer({
     storage,
-    limits: { fileSize: 4 * 1024 * 1024 }, // 4MB limit (Vercel has body size limits too)
+    limits: { fileSize: 2 * 1024 * 1024 }, // 2MB limit (Safe for Vercel 4.5MB Response Limit)
     fileFilter: function (req, file, cb) {
         checkFileType(file, cb);
     }
-});
+}).single('resume'); // Define single upload here
 
 // @route POST /api/upload
 // @desc Upload a file (Returns Base64 Data URI)
-router.post('/', upload.single('resume'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).send({ message: 'No file uploaded' });
-    }
+router.post('/', (req, res) => {
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            // A Multer error occurred when uploading (e.g. File too large)
+            if (err.code === 'LIMIT_FILE_SIZE') {
+                return res.status(400).json({ success: false, message: 'File too large. Max limit is 2MB.' });
+            }
+            return res.status(400).json({ success: false, message: err.message });
+        } else if (err) {
+            // An unknown error occurred when uploading.
+            return res.status(400).json({ success: false, message: err });
+        }
 
-    // Convert buffer to Base64
-    const b64 = Buffer.from(req.file.buffer).toString('base64');
-    const dataURI = `data:${req.file.mimetype};base64,${b64}`;
+        // Everything went fine.
+        if (!req.file) {
+            return res.status(400).send({ message: 'No file uploaded' });
+        }
 
-    res.send({
-        success: true,
-        message: 'File uploaded successfully',
-        filePath: dataURI // Returning Data URI instead of URL
+        // Convert buffer to Base64
+        const b64 = Buffer.from(req.file.buffer).toString('base64');
+        const dataURI = `data:${req.file.mimetype};base64,${b64}`;
+
+        res.send({
+            success: true,
+            message: 'File uploaded successfully',
+            filePath: dataURI // Returning Data URI instead of URL
+        });
     });
 });
 
