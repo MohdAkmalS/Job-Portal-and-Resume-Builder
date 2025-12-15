@@ -55,7 +55,7 @@ const ResetPassword = () => {
         setError('');
 
         try {
-            await axios.post('https://jobportal-backend.vercel.app/api/auth/reset-password', {
+            await axios.post('https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/reset-password', {
                 email: resetData.email,
                 newPassword: formData.newPassword
             });

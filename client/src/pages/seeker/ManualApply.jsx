@@ -35,7 +35,7 @@ const ManualApply = () => {
         const init = async () => {
             // 1. Fetch Job Details
             try {
-                const res = await axios.get(`https://jobportal-backend.vercel.app/api/jobs/${jobId}`);
+                const res = await axios.get(`https://job-portal-and-resume-builder-pruy.vercel.app/api/jobs/${jobId}`);
                 if (res.data.success) {
                     setJob(res.data.data);
                 }
@@ -58,7 +58,7 @@ const ManualApply = () => {
 
             // 3. Check for existing application
             try {
-                const statsRes = await axios.get('https://jobportal-backend.vercel.app/api/applications/my-stats', { withCredentials: true });
+                const statsRes = await axios.get('https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/my-stats', { withCredentials: true });
                 const applied = statsRes.data.data.applications.some(app => {
                     const appJobId = app.job?._id || app.job;
                     return appJobId && String(appJobId) === String(jobId);
@@ -127,7 +127,7 @@ const ManualApply = () => {
             const formData = new FormData();
             formData.append('resume', resumeFile);
 
-            const uploadRes = await axios.post('https://jobportal-backend.vercel.app/api/upload', formData, {
+            const uploadRes = await axios.post('https://job-portal-and-resume-builder-pruy.vercel.app/api/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
                 withCredentials: true
             });
@@ -143,7 +143,7 @@ const ManualApply = () => {
                 manualData: formData // Sending it anyway as per previous logic
             };
 
-            await axios.post(`https://jobportal-backend.vercel.app/api/applications/${jobId}/apply`, payload, { withCredentials: true });
+            await axios.post(`https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/${jobId}/apply`, payload, { withCredentials: true });
 
             // Success Redirect
             navigate('/my-applications');

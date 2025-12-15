@@ -64,7 +64,7 @@ const Register = () => {
                 : { companyName: formData.companyName, designation: formData.designation };
 
             // Send OTP instead of creating account
-            const res = await axios.post('https://jobportal-backend.vercel.app/api/auth/send-signup-otp', {
+            const res = await axios.post('https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/send-signup-otp', {
                 name: formData.name,
                 email: formData.email,
                 password: formData.password,

@@ -33,7 +33,7 @@ const ReviewApplications = () => {
 
     const fetchApplications = async () => {
         try {
-            const res = await axios.get('https://jobportal-backend.vercel.app/api/applications/recruiter', { withCredentials: true });
+            const res = await axios.get('https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/recruiter', { withCredentials: true });
             setApplications(res.data.data);
         } catch (err) {
             console.error(err);
@@ -55,7 +55,7 @@ const ReviewApplications = () => {
 
     const updateStatus = async (id, status) => {
         try {
-            await axios.patch(`https://jobportal-backend.vercel.app/api/applications/${id}/status`, { status }, { withCredentials: true });
+            await axios.patch(`https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/${id}/status`, { status }, { withCredentials: true });
             fetchApplications();
             if (selectedApp) setSelectedApp(prev => ({ ...prev, status }));
         } catch (err) {
@@ -66,7 +66,7 @@ const ReviewApplications = () => {
     const handleScheduleInterview = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`https://jobportal-backend.vercel.app/api/applications/${selectedApp._id}/schedule`, interviewData, { withCredentials: true });
+            await axios.post(`https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/${selectedApp._id}/schedule`, interviewData, { withCredentials: true });
             fetchApplications();
             setScheduleModal(false);
             setShowModal(false);

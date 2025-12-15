@@ -18,7 +18,7 @@ const RecruiterDashboard = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const res = await axios.get('https://jobportal-backend.vercel.app/api/jobs/stats', { withCredentials: true });
+                const res = await axios.get('https://job-portal-and-resume-builder-pruy.vercel.app/api/jobs/stats', { withCredentials: true });
                 setStatsData(res.data.data);
             } catch (err) {
                 console.error("Failed to fetch stats", err);

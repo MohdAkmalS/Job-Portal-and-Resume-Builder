@@ -81,7 +81,7 @@ const VerifyEmail = () => {
         setError('');
 
         try {
-            const res = await axios.post('https://jobportal-backend.vercel.app/api/auth/verify-email-otp', {
+            const res = await axios.post('https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/verify-email-otp', {
                 email: signupData.email,
                 otp: otpCode,
                 name: signupData.name,
@@ -113,7 +113,7 @@ const VerifyEmail = () => {
         setError('');
 
         try {
-            const res = await axios.post('https://jobportal-backend.vercel.app/api/auth/resend-signup-otp', {
+            const res = await axios.post('https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/resend-signup-otp', {
                 email: signupData.email
             });
 

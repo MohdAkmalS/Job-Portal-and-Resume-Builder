@@ -10,7 +10,7 @@ const SeekerInterviews = () => {
         const fetchInterviews = async () => {
             try {
                 // Using my-stats to get full history then filter
-                const res = await axios.get('https://jobportal-backend.vercel.app/api/applications/my-stats', { withCredentials: true });
+                const res = await axios.get('https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/my-stats', { withCredentials: true });
                 if (res.data.success) {
                     // Filter for status='Interview'
                     const scheduled = res.data.data.applications.filter(app => app.status === 'Interview');

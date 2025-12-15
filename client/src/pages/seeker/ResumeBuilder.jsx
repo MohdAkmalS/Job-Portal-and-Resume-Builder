@@ -217,7 +217,7 @@ const ResumeBuilder = () => {
                 }
             };
 
-            const res = await axios.put('https://jobportal-backend.vercel.app/api/auth/update-profile', profilePayload, { withCredentials: true });
+            const res = await axios.put('https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/update-profile', profilePayload, { withCredentials: true });
             if (res.data.success) {
                 alert('Data saved successfully!');
             }

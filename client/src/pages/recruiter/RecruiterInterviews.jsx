@@ -13,7 +13,7 @@ const RecruiterInterviews = () => {
                 // Fetch all applications with status='Interview'
                 // Reusing the getRecruiterApplications logic but filtering?
                 // Or I can add a dedicated endpoint query param ?status=Interview to /applications
-                const res = await axios.get('https://jobportal-backend.vercel.app/api/applications/recruiter', { withCredentials: true });
+                const res = await axios.get('https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/recruiter', { withCredentials: true });
                 if (res.data.success) {
                     const scheduled = res.data.data.filter(app => app.interview && app.interview.date);
                     setInterviews(scheduled);

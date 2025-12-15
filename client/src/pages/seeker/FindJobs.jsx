@@ -29,7 +29,7 @@ const FindJobs = () => {
     useEffect(() => {
         const fetchAppliedStatus = async () => {
             try {
-                const res = await axios.get('https://jobportal-backend.vercel.app/api/applications/my-stats', { withCredentials: true });
+                const res = await axios.get('https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/my-stats', { withCredentials: true });
                 // Extract IDs from the application list
                 const ids = res.data.data.applications.map(app => {
                     // Handle populate (object) or raw ID or null
@@ -51,7 +51,7 @@ const FindJobs = () => {
             const query = new URLSearchParams(filters).toString();
             const cleanQuery = query.replace(/[^=&]+=(&|$)/g, "").replace(/&$/, "");
 
-            const res = await axios.get(`https://jobportal-backend.vercel.app/api/jobs?${cleanQuery}`);
+            const res = await axios.get(`https://job-portal-and-resume-builder-pruy.vercel.app/api/jobs?${cleanQuery}`);
             setJobs(res.data.data);
         } catch (err) {
             console.error("Failed to fetch jobs");
@@ -84,7 +84,7 @@ const FindJobs = () => {
             // ... append other fields ...
             // await axios.post(url, formData, headers)
 
-            await axios.post(`https://jobportal-backend.vercel.app/api/applications/${selectedJob._id}/apply`,
+            await axios.post(`https://job-portal-and-resume-builder-pruy.vercel.app/api/applications/${selectedJob._id}/apply`,
                 payload,
                 { withCredentials: true }
             );

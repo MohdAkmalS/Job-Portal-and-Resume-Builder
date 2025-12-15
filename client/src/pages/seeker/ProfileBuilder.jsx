@@ -120,7 +120,7 @@ const ProfileBuilder = () => {
                     projects: formData.projects
                 }
             };
-            await axios.put('https://jobportal-backend.vercel.app/api/auth/profile', payload, { withCredentials: true });
+            await axios.put('https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/profile', payload, { withCredentials: true });
             setMessage({ type: 'success', text: 'Profile saved successfully!' });
         } catch (err) {
             setMessage({ type: 'error', text: 'Failed to save profile' });

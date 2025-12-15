@@ -72,7 +72,7 @@ const ResetPasswordOTP = () => {
         setError('');
 
         try {
-            await axios.post('https://jobportal-backend.vercel.app/api/auth/verify-reset-otp', {
+            await axios.post('https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/verify-reset-otp', {
                 email: resetData.email,
                 otp: otpCode
             });
@@ -97,7 +97,7 @@ const ResetPasswordOTP = () => {
         setError('');
 
         try {
-            await axios.post('https://jobportal-backend.vercel.app/api/auth/forgot-password', {
+            await axios.post('https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/forgot-password', {
                 email: resetData.email
             });
 

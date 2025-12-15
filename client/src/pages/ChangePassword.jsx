@@ -56,7 +56,7 @@ const ChangePassword = () => {
 
         try {
             await axios.put(
-                'https://jobportal-backend.vercel.app/api/auth/change-password',
+                'https://job-portal-and-resume-builder-pruy.vercel.app/api/auth/change-password',
                 {
                     currentPassword: formData.currentPassword,
                     newPassword: formData.newPassword
