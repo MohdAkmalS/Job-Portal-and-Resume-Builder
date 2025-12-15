@@ -12,6 +12,11 @@ if (apiKey) {
 
 // Send OTP email for signup
 const sendSignupOTP = async (email, otp) => {
+    if (!process.env.BREVO_API_KEY) {
+        console.error('❌ FATAL: BREVO_API_KEY is missing');
+        return { success: false, error: "Server configuration error: Missing Email API Key" };
+    }
+
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.sender = {
@@ -54,12 +59,17 @@ const sendSignupOTP = async (email, otp) => {
     } catch (error) {
         console.error('❌ Email send error:', error.message);
         console.error('Error details:', error.response?.body || error);
-        return { success: false, error: error.message };
+        return { success: false, error: "Email provider error: " + error.message };
     }
 };
 
 // Send OTP email for password reset
 const sendResetOTP = async (email, otp) => {
+    if (!process.env.BREVO_API_KEY) {
+        console.error('❌ FATAL: BREVO_API_KEY is missing');
+        return { success: false, error: "Server configuration error: Missing Email API Key" };
+    }
+
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail.sender = {
@@ -102,7 +112,7 @@ const sendResetOTP = async (email, otp) => {
     } catch (error) {
         console.error('❌ Email send error:', error.message);
         console.error('Error details:', error.response?.body || error);
-        return { success: false, error: error.message };
+        return { success: false, error: "Email provider error: " + error.message };
     }
 };
 

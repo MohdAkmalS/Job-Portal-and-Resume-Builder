@@ -85,7 +85,7 @@ exports.sendSignupOTP = async (req, res) => {
 
         const emailResult = await sendSignupOTP(email, otpCode);
         if (!emailResult.success) {
-            return res.status(500).json({ success: false, message: "OTP email failed" });
+            return res.status(500).json({ success: false, message: emailResult.error || "OTP email failed" });
         }
 
         otpRateLimits.set(email, now);
@@ -194,7 +194,7 @@ exports.resendSignupOTP = async (req, res) => {
 
         const emailResult = await sendSignupOTP(email, otpCode);
         if (!emailResult.success) {
-            return res.status(500).json({ success: false, message: "OTP email failed" });
+            return res.status(500).json({ success: false, message: emailResult.error || "OTP email failed" });
         }
 
         otpRateLimits.set(email, now);
@@ -246,7 +246,7 @@ exports.forgotPassword = async (req, res) => {
 
         const emailResult = await sendResetOTP(email, otpCode);
         if (!emailResult.success) {
-            return res.status(500).json({ success: false, message: "Failed to send OTP" });
+            return res.status(500).json({ success: false, message: emailResult.error || "Failed to send OTP" });
         }
 
         otpRateLimits.set(email, now);
