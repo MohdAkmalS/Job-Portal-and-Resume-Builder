@@ -36,24 +36,37 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 
 /* ===================== CORS (FIXED, NO WILDCARD) ===================== */
-const FRONTEND_URL = "https://job-portal-and-resume-builder.vercel.app";
+/* ===================== CORS (FIXED, DYNAMIC ORIGIN) ===================== */
+const allowedOrigins = [
+    "https://job-portal-and-resume-builder.vercel.app",
+    "http://localhost:5173",
+    "http://localhost:5000"
+];
 
-app.use(
-    cors({
-        origin: FRONTEND_URL,
-        credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"],
-    })
-);
+const corsOptions = {
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
 
-app.options(
-    "*",
-    cors({
-        origin: FRONTEND_URL,
-        credentials: true,
-    })
-);
+        // Allow any Vercel deployment (Production or Preview)
+        if (origin.endsWith(".vercel.app")) {
+            return callback(null, true);
+        }
+
+        // Allow allowed static origins
+        if (allowedOrigins.indexOf(origin) !== -1) {
+            return callback(null, true);
+        }
+
+        return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 /* ===================== ROUTES ===================== */
 app.use("/api/auth", require("../routes/authRoutes"));
