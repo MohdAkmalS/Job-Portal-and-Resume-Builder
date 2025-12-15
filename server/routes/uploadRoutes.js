@@ -22,7 +22,7 @@ function checkFileType(file, cb) {
 
 const upload = multer({
     storage,
-    limits: { fileSize: 1 * 1024 * 1024 }, // 1MB limit (Strict safe limit for Vercel)
+    limits: { fileSize: 4 * 1024 * 1024 }, // 4MB limit (Max safe limit for Vercel)
     fileFilter: function (req, file, cb) {
         checkFileType(file, cb);
     }
@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
         if (err instanceof multer.MulterError) {
             // A Multer error occurred when uploading (e.g. File too large)
             if (err.code === 'LIMIT_FILE_SIZE') {
-                return res.status(400).json({ success: false, message: 'File too large. Max limit is 1MB.' });
+                return res.status(400).json({ success: false, message: 'File too large. Max limit is 4MB.' });
             }
             return res.status(400).json({ success: false, message: err.message });
         } else if (err) {
